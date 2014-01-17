@@ -32,6 +32,6 @@ var view = new PhotoView({
 
 view.$el.appendTo('body');
 
-me.fetch().then(function() {
+me.fetch().always(function() {
   view.render();
 });

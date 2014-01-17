@@ -14,9 +14,13 @@
 <body>
 
   <script type="template/text" id="photo_view">
-    <div class="photo">
-      <img src="<%= dataUri %>"/>
-    </div>
+    <% if (typeof dataUri !== "undefined") { %>
+      <div class="photo">
+        <img src="<%= dataUri %>"/>
+      </div>
+    <% } else { %>
+      <div class="error">Photo not found!</div>
+    <% } %>
   </script>
 
   <script src="/src/main.js"></script>
