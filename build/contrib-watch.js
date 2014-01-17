@@ -5,7 +5,7 @@ module.exports = function(grunt) {
       options: {
         livereload: true,
       },
-      files: ['src/**/*.{js,css}', 'prod/*'],
+      files: ['src/**/*.{js,css,html}', 'prod/*'],
       tasks: [],
     },
     jshintrc: {
