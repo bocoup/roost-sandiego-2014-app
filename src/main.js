@@ -1,19 +1,14 @@
 define(function(require) {
-  var Photo = require("components/photo/model");
-  var PhotoView = require("components/photo/detail-view");
+  var PhotoCollection = require("components/photo/collection");
+  var GalleryView = require("components/photo/gallery-view");
 
-  var me = new Photo({
-    id: 1
+  var photos = new PhotoCollection();
+  var gallery = new GalleryView({
+    collection : photos,
+    el: "#photos"
   });
 
-
-  var view = new PhotoView({
-    model : me
-  });
-
-  view.$el.appendTo('body');
-
-  me.fetch().always(function() {
-    view.render();
+  photos.fetch().then(function() {
+    gallery.render();
   });
 });

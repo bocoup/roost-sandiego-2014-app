@@ -5,3 +5,15 @@ body {
 .photo img {
   border: 15px solid papayawhip;
 }
+
+ul.thumbnails {
+  list-style-type: none;
+}
+
+ul.thumbnails img {
+  max-width: 200px;
+  display: inline-block;
+  float: left;
+  margin: 10px;
+  border: 10px solid papayawhip;
+}

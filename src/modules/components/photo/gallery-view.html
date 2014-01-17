@@ -1,0 +1,13 @@
+<% if (!gallery.length) { %>
+  <h3>No photos found.</h3>
+<% } else { %>
+  <ul class="thumbnails">
+    <% _.each(gallery, function(thumbnail) { %>
+    <li>
+      <a href="#photo/<%= thumbnail.id %>" class="thumbnail">
+        <img src="<%= thumbnail.dataUri %>" alt="">
+      </a>
+    </li>
+    <% }); %>
+  </ul>
+<% } %>
