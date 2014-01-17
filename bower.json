@@ -1,0 +1,15 @@
+{
+  "name": "roostagram",
+  "version": "0.1.0",
+  "homepage": "https://github.com/bocoup/roostagram",
+  "authors": [
+    "Bocoup"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "backbone": "~1.1.0",
+    "lodash": "~2.4.1",
+    "jquery": "~2.0.3"
+  }
+}
