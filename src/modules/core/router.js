@@ -4,6 +4,7 @@ define(function(require) {
 
   var Backbone = require('backbone');
 
+  var OneColLayout = require('layouts/one-col');
   var TwoColLayout = require('layouts/two-col');
 
   // Create and instantiate our photocollection - we're going to pass this to
@@ -16,7 +17,8 @@ define(function(require) {
   var Router = Backbone.Router.extend({
 
     routes: {
-      "": "index"
+      "": "index",
+      "photo/:id": "singlePhoto"
     },
 
     insertView: function(pageView) {
@@ -32,6 +34,14 @@ define(function(require) {
       this.insertView(new TwoColLayout({
         collection: photos
       }));
+    },
+
+    singlePhoto: function(id) {
+      this.insertView(new OneColLayout({
+        collection: photos,
+        modelId: id
+      }));
+
     }
 
   });
