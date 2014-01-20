@@ -9,6 +9,6 @@ define(function(require) {
   });
 
   photos.fetch().then(function() {
-    gallery.render();
+    gallery.render().place();
   });
 });

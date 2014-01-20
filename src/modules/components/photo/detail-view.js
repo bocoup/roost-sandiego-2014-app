@@ -1,18 +1,27 @@
 define(function(require) {
-  var Backbone = require("backbone");
+
+  var BaseView = require("core/base-view");
   var Photo = require("components/photo/model");
   var template = require("tmpl!src/modules/components/photo/detail-view");
 
-  var PhotoView = Backbone.View.extend({
+  var PhotoView = BaseView.extend({
+
+    template: template,
+
     model : Photo,
 
-    render: function() {
+    serializeData: function() {
 
-      this.$el.html(template(this.model.toJSON()));
+      return {
 
-      return this;
+        photo: this.model.toJSON()
+
+      };
+
     }
+
   });
 
   return PhotoView;
+
 });

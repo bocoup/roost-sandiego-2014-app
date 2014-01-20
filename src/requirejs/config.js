@@ -5,7 +5,9 @@ require.config({
     backbone: "bower_components/backbone/backbone",
     underscore: "bower_components/lodash/dist/lodash",
     tmpl: "bower_components/lodash-template-loader/loader",
+
     components: "src/modules/components",
+    core: "src/modules/core",
     services: "src/modules/services"
   },
   map: {
