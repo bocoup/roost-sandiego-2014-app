@@ -7,6 +7,7 @@ require.config({
     tmpl: "bower_components/lodash-template-loader/loader",
 
     components: "src/modules/components",
+    layouts: "src/modules/components/layouts",
     core: "src/modules/core",
     services: "src/modules/services"
   },
