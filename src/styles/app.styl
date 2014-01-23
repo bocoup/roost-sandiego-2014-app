@@ -48,10 +48,10 @@ h1 {
   margin: 0 .5em;
   width: 8em;
   cursor: pointer;
-}
 
-.btn:hover {
-  background-color: #942E37;
+  &:hover {
+    background-color: #942E37;
+  }
 }
 
 .delete .btn {
@@ -59,29 +59,32 @@ h1 {
   font-size: .8em;
   color: #a3a3a3;
   width: 11em;
+
+  &:hover {
+    background: #CECECE;
+    color: #838383;
+  }
 }
 
-.delete .btn:hover {
-  background: #CECECE;
-  color: #838383;
-}
 
 .photo {
   background: white;
 }
 
-.content .webcam video {
-  border: 2px solid #9E9E9E;
-  margin-bottom: 2em;
-  padding: 1em;
-}
+.content {
+  .webcam video {
+    border: 2px solid #9E9E9E;
+    margin-bottom: 2em;
+    padding: 1em;
+  }
 
-.content input.btn {
-  color: black;
-}
+  input.btn {
+    color: black;
+  }
 
-.content input.btn:hover {
-  background: #ebebeb;
+  input.btn:hover {
+    background: #ebebeb;
+  }
 }
 
 /* ------------------ */
@@ -116,44 +119,52 @@ header {
 }
 
 /* webcam view */
-.webcam video {
-  width: 100%;
-  border: 2px solid #06d1f0;
-  box-sizing: border-box;
-}
+.webcam {
+  video {
+    width: 100%;
+    border: 2px solid #06d1f0;
+    box-sizing: border-box;
+  }
 
-.take canvas {
-  display: none;
+  canvas {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 420px) {
-  .webcam canvas {
-    width: 100%;
+  .webcam {
+    canvas {
+      width: 100%;
+    }
   }
 }
 
 /* photo upload view */
-.content input {
-  border: 1px solid #ddd;
-  margin: auto;
-  display: inherit;
-  cursor: pointer;
-  padding: 1em;
-  background: #ebebeb;
-  font-size: 16px;
-  border-radius: 4px;
-  transition: all 0.2s ease-in-out;
-  line-height: 1;
-  width: 50%;
-}
+.content {
+  input {
+    border: 1px solid #ddd;
+    margin: auto;
+    display: inherit;
+    cursor: pointer;
+    padding: 1em;
+    background: #ebebeb;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+    line-height: 1;
+    width: 50%;
 
-.content input:hover {
-  border-color: #70425B;
+    &:hover {
+      border-color: #70425B;
+    }
+  }
 }
 
 @media only screen and (max-width: 420px) {
-  .content input {
-    width: 90%;
+  .content {
+    input {
+      width: 90%;
+    }
   }
 }
 
