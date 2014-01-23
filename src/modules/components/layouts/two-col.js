@@ -4,6 +4,7 @@ define(function(require) {
 
   var BaseView = require('core/base-view');
   var PhotoGalleryView = require('components/photo/gallery-view');
+  var ToolsStandardView = require('components/tools/standard-view');
   var template = require('tmpl!src/modules/components/layouts/two-col');
 
   return BaseView.extend({
@@ -22,6 +23,12 @@ define(function(require) {
           options: {
             collection: self.collection
           }
+        });
+
+        self.addSubView({
+          name: 'ToolsStandardView',
+          viewType: ToolsStandardView,
+          container: '.side-bar'
         });
       });
 
