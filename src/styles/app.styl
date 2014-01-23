@@ -1,4 +1,5 @@
 @import 'nib'
+@import 'shared'
 
 /* ------------------ */
 /*   Primary styles   */
@@ -12,7 +13,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
-  background: #F8F8F8;
+  background: $background_color;
 }
 
 a {
@@ -91,7 +92,7 @@ h1 {
 /* ------------------ */
 
 header {
-  background: #3b1128;
+  background: $header_background;
   padding: 1.0em 0 .6em;
   margin-bottom: 10em /*3.5em*/;
   text-align: center;
@@ -99,8 +100,8 @@ header {
 
 .logo a {
   display: inline-block;
-  border-top: 1px solid #ae99a3;
-  border-bottom: 1px solid #ae99a3;
+  border-top: 1px solid $header_logo;
+  border-bottom: 1px solid $header_logo;
   padding: .2em;
 }
 
@@ -124,7 +125,7 @@ header {
 
 /* two col layout */
 .side-bar {
-  background: #f8f8f8;
+  background: $background_color;
   position: fixed;
   width: 100%;
   left: 0;
