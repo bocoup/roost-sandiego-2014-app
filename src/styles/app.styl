@@ -1,6 +1,3 @@
-@import 'nib'
-@import 'shared'
-
 /* ------------------ */
 /*   Primary styles   */
 /* ------------------ */
@@ -115,86 +112,6 @@ header {
   }
   .container {
     margin: 0 1em;
-  }
-}
-
-/* one col layout */
-.layout.single .content {
-  text-align: center;
-}
-
-/* two col layout */
-.side-bar {
-  background: $background_color;
-  position: fixed;
-  width: 100%;
-  left: 0;
-  top: 80px;
-}
-
-/* photo detail view */
-.photo {
-  display: inline-block;
-  max-width: 40%;
-  border: 12px solid #fff;
-  border-bottom-width: 42px;
-  box-shadow: 10px 10px 35px #ccc;
-  transform: rotate(3deg);
-}
-
-.photo .btn {
-  margin-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-@media only screen and (max-width: 700px) {
-  .photo {
-    max-width: 80%;
-  }
-}
-
-/* photo gallery view */
-ul.thumbnails {
-  overflow: auto;
-  margin-bottom: 2em;
-  list-style-type: none;
-}
-
-ul.thumbnails li {
-  width: 25%;
-  float: left;
-  padding: 0 0.5em;
-}
-
-ul.thumbnails li a.thumbnail {
-  display: block;
-  padding: 4px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  transition: all 0.2s ease-in-out;
-}
-
-ul.thumbnails li a.thumbnail:hover {
-  border-color: #70425b;
-}
-
-@media only screen and (max-width: 980px) {
-  ul.thumbnails {
-    margin-bottom: 1em;
-  }
-}
-
-@media only screen and (max-width: 700px) {
-  ul.thumbnails li {
-    width: 50%;
-  }
-}
-
-@media only screen and (max-width: 420px) {
-  ul.thumbnails li {
-    width: 100%;
   }
 }
 

@@ -4,9 +4,12 @@ module.exports = function(grunt) {
     dev: {
       options: {
         compress: false,
+        import: ['nib', 'shared'],
+        paths: ['src/styles'],
       },
       src: [
-        'src/styles/app.styl'
+        'src/styles/app.styl',
+        'src/modules/**/*.styl',
       ],
       dest: 'prod/app.css',
     },
