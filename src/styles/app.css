@@ -1,19 +1,264 @@
+/* ------------------ */
+/*   Primary styles   */
+/* ------------------ */
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
-  color: #0a0;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #F8F8F8;
 }
 
-.photo img {
-  border: 15px solid papayawhip;
+a {
+  text-decoration: none;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1 {
+  margin: 0;
+}
+
+.container {
+  max-width: 980px;
+  margin: auto;
+}
+
+.btn {
+  line-height: 2.5em;
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+  border: none;
+  font-size: 16px;
+  color: white;
+  background-color: #d24551;
+  margin: 0 .5em;
+  width: 8em;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #942E37;
+}
+
+.delete .btn {
+  background: #E7E7E7;
+  font-size: .8em;
+  color: #a3a3a3;
+  width: 11em;
+}
+
+.delete .btn:hover {
+  background: #CECECE;
+  color: #838383;
+}
+
+.photo {
+  background: white;
+}
+
+.content .webcam video {
+  border: 2px solid #9E9E9E;
+  margin-bottom: 2em;
+  padding: 1em;
+}
+
+.content input.btn {
+  color: black;
+}
+
+.content input.btn:hover {
+  background: #ebebeb;
+}
+
+/* ------------------ */
+/*       Header       */
+/* ------------------ */
+
+header {
+  background: #3b1128;
+  padding: 1.0em 0 .6em;
+  margin-bottom: 10em /*3.5em*/;
+  text-align: center;
+}
+
+.logo a {
+  display: inline-block;
+  border-top: 1px solid #ae99a3;
+  border-bottom: 1px solid #ae99a3;
+  padding: .2em;
+}
+
+/* ------------------ */
+/*    Media Queries   */
+/* ------------------ */
+
+@media only screen and (max-width: 980px) {
+  header {
+    margin-bottom: 8em;
+  }
+  .container {
+    margin: 0 1em;
+  }
+}
+
+/* one col layout */
+.layout.single .content {
+  text-align: center;
+}
+
+/* two col layout */
+.side-bar {
+  background: #f8f8f8;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 80px;
+}
+
+/* photo detail view */
+.photo {
+  display: inline-block;
+  max-width: 40%;
+  border: 12px solid #fff;
+  border-bottom-width: 42px;
+  -webkit-box-shadow: 10px 10px 35px #ccc;
+  box-shadow: 10px 10px 35px #ccc;
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+
+.photo .btn {
+  margin-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media only screen and (max-width: 700px) {
+  .photo {
+    max-width: 80%;
+  }
+}
+
+/* photo gallery view */
 ul.thumbnails {
+  overflow: auto;
+  margin-bottom: 2em;
   list-style-type: none;
 }
 
-ul.thumbnails img {
-  max-width: 200px;
-  display: inline-block;
+ul.thumbnails li {
+  width: 25%;
   float: left;
-  margin: 10px;
-  border: 10px solid papayawhip;
+  padding: 0 0.5em;
+}
+
+ul.thumbnails li a.thumbnail {
+  display: block;
+  padding: 4px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+ul.thumbnails li a.thumbnail:hover {
+  border-color: #70425b;
+}
+
+@media only screen and (max-width: 980px) {
+  ul.thumbnails {
+    margin-bottom: 1em;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  ul.thumbnails li {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  ul.thumbnails li {
+    width: 100%;
+  }
+}
+
+/* webcam view */
+.webcam video {
+  width: 100%;
+  border: 2px solid #06d1f0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.take canvas {
+  display: none;
+}
+
+@media only screen and (max-width: 420px) {
+  .webcam canvas {
+    width: 100%;
+  }
+}
+
+/* photo upload view */
+.content input {
+  border: 1px solid #ddd;
+  margin: auto;
+  display: inherit;
+  cursor: pointer;
+  padding: 1em;
+  background: #ebebeb;
+  font-size: 16px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  line-height: 1;
+  width: 50%;
+}
+
+.content input:hover {
+  border-color: #70425B;
+}
+
+@media only screen and (max-width: 420px) {
+  .content input {
+    width: 90%;
+  }
+}
+
+/* toolbar */
+div.toolbar {
+  text-align: center;
+  border-bottom: 1px solid #DADADA;
+  padding: 2em;
 }
