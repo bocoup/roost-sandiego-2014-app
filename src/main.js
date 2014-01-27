@@ -1,26 +1,6 @@
 define(function(require) {
-  var $ = require("jquery");
-  var _ = require("underscore");
-  var Backbone = require("backbone");
-
-  var Photo = require("src/modules/components/photo/model");
-
-  var PhotoView = Backbone.View.extend({
-    model : Photo,
-
-    template: _.template($("#photo_view").text()),
-
-    render: function() {
-
-      this.$el.html(
-        this.template(
-          this.model.toJSON()
-        )
-      );
-
-      return this;
-    }
-  });
+  var Photo = require("components/photo/model");
+  var PhotoView = require("components/photo/detail-view");
 
   var me = new Photo({
     id: 1
