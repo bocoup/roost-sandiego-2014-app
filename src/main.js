@@ -1,4 +1,8 @@
-define(["jquery", "underscore", "backbone"], function($, _, Backbone) {
+define(function(require) {
+  var $ = require("jquery");
+  var _ = require("underscore");
+  var Backbone = require("backbone");
+
   var Photo = Backbone.Model.extend({
     urlRoot : function() {
       return "http://localhost:8001/photos";
