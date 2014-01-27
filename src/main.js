@@ -3,11 +3,7 @@ define(function(require) {
   var _ = require("underscore");
   var Backbone = require("backbone");
 
-  var Photo = Backbone.Model.extend({
-    urlRoot : function() {
-      return "http://localhost:8001/photos";
-    }
-  });
+  var Photo = require("src/modules/components/photo/model");
 
   var PhotoView = Backbone.View.extend({
     model : Photo,
