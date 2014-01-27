@@ -13,8 +13,7 @@
   "browser": true,
   "devel": true,
   "globals": {
-    "Backbone": true,
-    "$": true,
-    "_": true
+    "define": true,
+    "require": true
   }
 }
