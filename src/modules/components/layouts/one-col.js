@@ -4,6 +4,7 @@ define(function(require) {
   var template = require("tmpl!src/modules/components/layouts/one-col");
 
   var PhotoDetailView = require('components/photo/detail-view');
+  var UploadView = require('components/photo/upload-view');
 
   var OneColView = BaseView.extend({
 
@@ -12,6 +13,7 @@ define(function(require) {
     initialize: function(options) {
 
       this.modelId = options.modelId;
+      this.page = options.page;
 
     },
 
@@ -19,20 +21,36 @@ define(function(require) {
 
       var self = this;
 
-      // Listen for the pageChange event, which will tell us which page this is
-      // We load different subViews, depending on which page this layout
-      // represents
-      self.collection.fetch().then(function() {
+      // single photo detail
+      if (self.page === 'photo') {
+        self.collection.fetch().then(function() {
 
-        self.addSubView({
-          viewType: PhotoDetailView,
+          self.addSubView({
+            viewType: PhotoDetailView,
+            container: '.content',
+            options: {
+              model: self.collection.get(self.modelId)
+            }
+          });
+        });
+
+      // upload a photo view
+      } else if (self.page === 'upload') {
+
+        var uploadView = self.addSubView({
+          viewType: UploadView,
           container: '.content',
           options: {
-            model: self.collection.get(self.modelId)
+            collection: self.collection
           }
         });
-      });
 
+        // when a done event is recieved, just pass it back
+        // up to the router.
+        uploadView.on('uploaded', function(ev, model) {
+          self.trigger('uploaded');
+        });
+      }
     }
 
   });
