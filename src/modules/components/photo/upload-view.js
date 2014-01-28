@@ -3,7 +3,9 @@ define(function(require) {
   'use strict';
 
   var BaseView = require('core/base-view');
-  var template = require("tmpl!src/modules/components/photo/upload-view");
+  var template = require('tmpl!src/modules/components/photo/upload-view');
+
+  var process = require('services/vintage');
 
   return BaseView.extend({
     template: template,
@@ -23,17 +25,20 @@ define(function(require) {
       // when file is loaded, process photo with our vintage service
       reader.onload = function(ev) {
 
-        collection.create({
-          dataUri: ev.target.result
-        }, {
-          wait: true,
-          success: function(ev, model) {
+        process(ev.target.result, function(data) {
+          // when file is loaded
+          collection.create({
+            dataUri: data
+          }, {
+            wait: true,
+            success: function(ev, model) {
 
-            // when the photo is done uploading, trigger the
-            // 'upload' event so that the parent view can decide what
-            // should be done.
-            self.trigger("uploaded", model);
-          }
+              // when the photo is done uploading, trigger the
+              // 'upload' event so that the parent view can decide what
+              // should be done.
+              self.trigger('uploaded', model);
+            }
+          });
         });
       };
 
