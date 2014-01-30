@@ -8,6 +8,7 @@ define(function(require) {
   var ToolsStandardView = require('components/tools/standard-view');
   var ToolsCaptureView = require('components/tools/capture-view');
   var template = require('tmpl!src/modules/components/layouts/two-col');
+  var _ = require('underscore');
   var $ = require('jquery');
 
   return BaseView.extend({
@@ -63,16 +64,32 @@ define(function(require) {
         });
       } else if (this.page === 'webcam') {
 
-        self.addSubView({
+        var webcamView = self.addSubView({
           name: 'WebcamView',
           viewType: WebcamView,
+          // The WebcamView needs access to the collection so it can insert new
+          // photos as they are taken.
+          options: {
+            collection: self.collection
+          },
           container: '.content'
         });
 
-        self.addSubView({
+        var captureView = self.addSubView({
           name: 'ToolsCaptureView',
           viewType: ToolsCaptureView,
           container: '.side-bar'
+        });
+
+        // When the capture view signals that the user wishes to take a photo,
+        // delegate the work to the webcam view.
+        captureView.on(
+          'requestCapture',
+          _.bind(webcamView.filterAndSave, webcamView)
+        );
+
+        webcamView.on('uploaded', function() {
+          self.trigger('uploaded');
         });
       }
 

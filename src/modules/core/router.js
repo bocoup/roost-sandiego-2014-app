@@ -68,9 +68,19 @@ define(function(require) {
     },
 
     webcam: function() {
-      this.insertView(new TwoColLayout({
+      var webcamView = new TwoColLayout({
+        collection: photos,
         page: "webcam"
-      }));
+      });
+
+      this.insertView(webcamView);
+
+      // when the upload is done, navigate back to our
+      // gallery view
+      webcamView.on("uploaded", function(ev) {
+        this.navigate("", { trigger: true });
+      }, this);
+
     }
 
   });

@@ -7,7 +7,15 @@ define(function(require) {
 
   return BaseView.extend({
 
-    template: template
+    template: template,
+
+    events: {
+      'click button': 'requestCapture'
+    },
+
+    requestCapture: function() {
+      this.trigger('requestCapture');
+    }
 
   });
 
