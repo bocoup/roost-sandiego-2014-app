@@ -4,6 +4,7 @@ define(function(require) {
 
   var BaseView = require('core/base-view');
   var PhotoGalleryView = require('components/photo/gallery-view');
+  var WebcamView = require('components/photo/webcam-view');
   var ToolsStandardView = require('components/tools/standard-view');
   var ToolsCaptureView = require('components/tools/capture-view');
   var template = require('tmpl!src/modules/components/layouts/two-col');
@@ -61,6 +62,12 @@ define(function(require) {
           });
         });
       } else if (this.page === 'webcam') {
+
+        self.addSubView({
+          name: 'WebcamView',
+          viewType: WebcamView,
+          container: '.content'
+        });
 
         self.addSubView({
           name: 'ToolsCaptureView',
