@@ -5,12 +5,17 @@ define(function(require) {
   var BaseView = require('core/base-view');
   var PhotoGalleryView = require('components/photo/gallery-view');
   var ToolsStandardView = require('components/tools/standard-view');
+  var ToolsCaptureView = require('components/tools/capture-view');
   var template = require('tmpl!src/modules/components/layouts/two-col');
   var $ = require('jquery');
 
   return BaseView.extend({
 
     template: template,
+
+    initialize: function(options) {
+      this.page = options.page;
+    },
 
     postPlace: function() {
 
@@ -37,22 +42,32 @@ define(function(require) {
 
       var self = this;
 
-      self.collection.fetch().then(function() {
-        self.addSubView({
-          name: 'PhotoGalleryView',
-          viewType: PhotoGalleryView,
-          container: '.content',
-          options: {
-            collection: self.collection
-          }
+      if (this.page === 'index') {
+
+        self.collection.fetch().then(function() {
+          self.addSubView({
+            name: 'PhotoGalleryView',
+            viewType: PhotoGalleryView,
+            container: '.content',
+            options: {
+              collection: self.collection
+            }
+          });
+
+          self.addSubView({
+            name: 'ToolsStandardView',
+            viewType: ToolsStandardView,
+            container: '.side-bar'
+          });
         });
+      } else if (this.page === 'webcam') {
 
         self.addSubView({
-          name: 'ToolsStandardView',
-          viewType: ToolsStandardView,
+          name: 'ToolsCaptureView',
+          viewType: ToolsCaptureView,
           container: '.side-bar'
         });
-      });
+      }
 
     }
 
