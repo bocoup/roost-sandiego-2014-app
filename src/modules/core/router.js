@@ -19,7 +19,8 @@ define(function(require) {
     routes: {
       "": "index",
       "photo/:id": "singlePhoto",
-      "upload": "upload"
+      "upload": "upload",
+      "webcam": "webcam"
     },
 
     insertView: function(pageView) {
@@ -33,7 +34,8 @@ define(function(require) {
 
     index: function() {
       this.insertView(new TwoColLayout({
-        collection: photos
+        collection: photos,
+        page: "index"
       }));
     },
 
@@ -63,6 +65,12 @@ define(function(require) {
         self.navigate("", { trigger: true });
       });
 
+    },
+
+    webcam: function() {
+      this.insertView(new TwoColLayout({
+        page: "webcam"
+      }));
     }
 
   });
