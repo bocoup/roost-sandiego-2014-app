@@ -1,11 +1,13 @@
 module.exports = function(grunt) {
 
   grunt.config.set('stylus', {
+    options: {
+      import: ['nib', 'shared'],
+      paths: ['src/styles'],
+    },
     dev: {
       options: {
         compress: false,
-        import: ['nib', 'shared'],
-        paths: ['src/styles'],
       },
       src: [
         'src/styles/app.styl',
@@ -13,6 +15,10 @@ module.exports = function(grunt) {
       ],
       dest: 'prod/app.css',
     },
+    prod: {
+      src: '<%= stylus.dev.src %>',
+      dest: '<%= stylus.dev.dest %>',
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-stylus');
