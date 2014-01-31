@@ -15,6 +15,7 @@
     "define": true,
     "suite": true,
     "test": true,
+    "setup": true,
     "assert": true
   }
 }
