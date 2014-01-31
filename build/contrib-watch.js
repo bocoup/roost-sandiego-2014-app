@@ -18,7 +18,7 @@ module.exports = function(grunt) {
     },
     scripts: {
       files: ['<%= jshint.app.src %>'],
-      tasks: ['jshint:app'],
+      tasks: ['jshint:app', 'mocha'],
     },
     page: {
       files: 'src/pages/*.html',
@@ -27,7 +27,11 @@ module.exports = function(grunt) {
     styles: {
       files: 'src/**/*.styl',
       tasks: ['stylus:dev'],
-    }
+    },
+    tests: {
+      files: ['test/unit/**/*'],
+      tasks: ['jshint:test', 'mocha'],
+    },
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');

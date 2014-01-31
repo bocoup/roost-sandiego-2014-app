@@ -12,7 +12,7 @@ module.exports = function(grunt) {
   // Tasks.
   grunt.registerTask('dev',
     'Compile and start a dev webserver.',
-    ['jshint', 'clean:prod', 'copy:app', 'stylus:dev', 'server:dev', 'watch']);
+    ['jshint', 'mocha', 'clean:prod', 'copy:app', 'stylus:dev', 'server:dev', 'watch']);
 
   grunt.registerTask('server',
     'Start the REST server and static server.',
