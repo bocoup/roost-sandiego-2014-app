@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('prod',
     'Compile for production and start a test webserver.',
-    ['clean:prod', 'jade:prod', 'stylus:prod']);
+    ['clean:prod', 'jade:prod', 'stylus:prod', 'server:prod']);
 
   grunt.registerTask('server',
     'Start the REST server and static server.',
