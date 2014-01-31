@@ -9,15 +9,12 @@ define(['src/modules/core/base-view'], function(BaseView) {
 
     suite('#render', function() {
       test('invokes custom `postRender` hook', function() {
-        var invoked = false;
-        this.view.postRender = function() {
-          invoked = true;
-        };
+        this.view.postRender = sinon.spy();
         this.view.template = function() {};
 
         this.view.render();
 
-        assert.ok(invoked);
+        assert.equal(this.view.postRender.callCount, 1);
       });
 
       test('correctly sets the markup to be used in BaseView#place', function() {
@@ -48,13 +45,10 @@ define(['src/modules/core/base-view'], function(BaseView) {
 
     suite('#place', function() {
       test('invokes custom `postPlace` hook', function() {
-        var invoked = false;
-        this.view.postPlace = function() {
-          invoked = true;
-        };
+        this.view.postPlace = sinon.spy();
         this.view.place();
 
-        assert.ok(invoked);
+        assert.equal(this.view.postPlace.callCount, 1);
       });
     });
   });

@@ -16,6 +16,7 @@
     "suite": true,
     "test": true,
     "setup": true,
+    "sinon": true,
     "assert": true
   }
 }
