@@ -8,6 +8,9 @@ module.exports = function(grunt) {
         insertRequire: ['src/main'],
         name: 'bower_components/almond/almond',
         out: 'prod/app.js',
+        optimize: 'uglify2',
+        generateSourceMaps: true,
+        preserveLicenseComments: false,
       },
     },
   });
