@@ -21,8 +21,8 @@ module.exports = function(grunt) {
       tasks: ['jshint:app', 'mocha'],
     },
     page: {
-      files: 'src/pages/*.html',
-      tasks: ['copy:app'],
+      files: 'src/pages/*.jade',
+      tasks: ['jade:dev'],
     },
     styles: {
       files: 'src/**/*.styl',

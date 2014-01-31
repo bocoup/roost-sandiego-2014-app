@@ -12,7 +12,7 @@ module.exports = function(grunt) {
   // Tasks.
   grunt.registerTask('setup-dev',
     'Prepare development environment',
-    ['jshint', 'mocha', 'clean:prod', 'copy:app', 'stylus:dev', 'server:dev']);
+    ['jshint', 'mocha', 'clean:prod', 'jade:dev', 'stylus:dev', 'server:dev']);
 
   grunt.registerTask('dev',
     'Compile and start a dev webserver.',
@@ -21,6 +21,10 @@ module.exports = function(grunt) {
   grunt.registerTask('test-integration',
     'Run integration tests in a real browser',
     ['setup-dev', 'mochaTest']);
+
+  grunt.registerTask('prod',
+    'Compile for production and start a test webserver.',
+    ['clean:prod', 'jade:prod']);
 
   grunt.registerTask('server',
     'Start the REST server and static server.',
