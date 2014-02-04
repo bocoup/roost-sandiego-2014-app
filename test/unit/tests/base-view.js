@@ -47,5 +47,29 @@ define(['src/modules/core/base-view'], function(BaseView) {
         assert.equal(this.view.postPlace.callCount, 1);
       });
     });
+
+    suite('#destroy', function() {
+      test('all event listeners are unbound', function() {
+        var handler = sinon.spy();
+        var view2 = new BaseView();
+        this.view.listenTo(view2, 'sample-event', handler);
+
+        this.view.destroy();
+        view2.trigger('sample-event');
+
+        assert.equal(handler.callCount, 0);
+      });
+
+      test('container element is emptied', function() {
+        this.view.template = sinon.stub().returns('<span>');
+
+        this.view.render();
+        this.view.place();
+
+        this.view.destroy();
+
+        assert.equal(this.view.$el.contents().length, 0);
+      });
+    });
   });
 });
