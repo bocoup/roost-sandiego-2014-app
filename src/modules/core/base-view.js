@@ -41,6 +41,11 @@ define(function(require) {
     },
 
     destroy: function() {
+
+      // In case an instance has specialized logic for cleaning itself up,
+      // invoke the `preDestroy` hook before any actual destruction occurs.
+      this.preDestroy();
+
       // Call destroy on all of the subViews we may have added
       this.destroySubViews();
 
@@ -52,6 +57,8 @@ define(function(require) {
 
       return this;
     },
+
+    preDestroy: function() {},
 
     destroySubViews: function() {
 
