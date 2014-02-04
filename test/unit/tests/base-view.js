@@ -70,6 +70,21 @@ define(['src/modules/core/base-view'], function(BaseView) {
 
         assert.equal(this.view.$el.contents().length, 0);
       });
+
+      test('invokes custom `preDestroy` hook', function() {
+        var view = this.view;
+        this.view.template = sinon.stub().returns('<p>');
+
+        this.view.render().place();
+
+        sinon.stub(this.view, 'preDestroy', function() {
+          assert.equal(this, view);
+          assert.equal(this.$el.contents().length, 1);
+        });
+        this.view.destroy();
+
+        assert.equal(this.view.preDestroy.callCount, 1);
+      });
     });
   });
 });

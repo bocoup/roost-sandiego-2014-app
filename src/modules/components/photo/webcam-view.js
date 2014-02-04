@@ -14,25 +14,14 @@ define(function(require) {
       this.collection = options.collection;
     },
 
-    destroy: function() {
+    // This fixes a known bug in Chrome that keeps the camera running even
+    // after destroying the video element.
+    preDestroy: function() {
       var video = this.$('video')[0];
 
-      // This fixes a known bug in Chrome that keeps the camera running even
-      // after destroying the video element.
       if (video) {
         video.src = undefined;
       }
-
-      // Call destroy on all of the subViews we may have added
-      this.destroySubViews();
-
-      // Release event listeners
-      this.stopListening();
-
-      // Empty our element - do not remove it, because we will use it again
-      this.$el.empty();
-
-      return this;
     },
 
     filterAndSave: function() {
