@@ -18,9 +18,7 @@ define(['src/modules/core/base-view'], function(BaseView) {
       });
 
       test('correctly sets the markup to be used in BaseView#place', function() {
-        this.view.template = function() {
-          return '<h1>test!</h1>';
-        };
+        this.view.template = sinon.stub().returns('<h1>test!</h1>');
 
         this.view.render();
         this.view.place();
@@ -31,9 +29,7 @@ define(['src/modules/core/base-view'], function(BaseView) {
       test('expands the template with the data returned by `serializeData`', function() {
         var expectedData = {};
         var actualData;
-        this.view.serializeData = function() {
-          return expectedData;
-        };
+        sinon.stub(this.view, 'serializeData').returns(expectedData);
         this.view.template = function(data) {
           actualData = data;
         };
