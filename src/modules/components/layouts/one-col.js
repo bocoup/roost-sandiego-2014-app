@@ -25,13 +25,20 @@ define(function(require) {
       if (self.page === 'photo') {
         self.collection.fetch().then(function() {
 
-          self.addSubView({
+          var detailView = self.addSubView({
             viewType: PhotoDetailView,
             container: '.content',
             options: {
               model: self.collection.get(self.modelId)
             }
           });
+
+          // when a deleted event is received, just pass it back
+          // up to the router.
+          detailView.on('deleted', function(ev, model) {
+            self.trigger('deleted');
+          });
+
         });
 
       // upload a photo view

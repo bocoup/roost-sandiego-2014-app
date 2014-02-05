@@ -40,12 +40,17 @@ define(function(require) {
     },
 
     singlePhoto: function(id) {
-      this.insertView(new OneColLayout({
+      var detailView = new OneColLayout({
         collection: photos,
         modelId: id,
         page: "photo"
-      }));
+      });
 
+      this.insertView(detailView);
+
+      detailView.on("deleted", function(ev) {
+        this.navigate("", {trigger: true});
+      }, this);
     },
 
     upload: function() {

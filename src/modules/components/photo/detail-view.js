@@ -10,6 +10,24 @@ define(function(require) {
 
     model : Photo,
 
+    events: {
+      "click button": "deletePhoto"
+    },
+
+    deletePhoto: function() {
+      var self = this;
+
+      this.model.destroy({
+        wait: true,
+        success: function() {
+          self.trigger("deleted");
+        },
+        error: function() {
+          self.$el.find('.photo').append('<p class="error">There was an error deleting this photo.</p>');
+        }
+      });
+    },
+
     serializeData: function() {
 
       return {
