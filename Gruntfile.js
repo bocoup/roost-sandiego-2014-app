@@ -10,9 +10,17 @@ module.exports = function(grunt) {
   grunt.loadTasks('build');
 
   // Tasks.
+  grunt.registerTask('setup-dev',
+    'Prepare development environment',
+    ['jshint', 'mocha', 'clean:prod', 'copy:app', 'stylus:dev', 'server:dev']);
+
   grunt.registerTask('dev',
     'Compile and start a dev webserver.',
-    ['jshint', 'mocha', 'clean:prod', 'copy:app', 'stylus:dev', 'server:dev', 'watch']);
+    ['setup-dev', 'watch']);
+
+  grunt.registerTask('test-integration',
+    'Run integration tests in a real browser',
+    ['setup-dev', 'mochaTest']);
 
   grunt.registerTask('server',
     'Start the REST server and static server.',

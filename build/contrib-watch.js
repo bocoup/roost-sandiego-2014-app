@@ -30,7 +30,7 @@ module.exports = function(grunt) {
     },
     tests: {
       files: ['test/unit/**/*'],
-      tasks: ['jshint:test', 'mocha'],
+      tasks: ['jshint:test-unit', 'mocha'],
     },
   });
 
