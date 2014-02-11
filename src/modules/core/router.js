@@ -18,7 +18,8 @@ define(function(require) {
 
     routes: {
       "": "index",
-      "photo/:id": "singlePhoto"
+      "photo/:id": "singlePhoto",
+      "upload": "upload"
     },
 
     insertView: function(pageView) {
@@ -39,8 +40,28 @@ define(function(require) {
     singlePhoto: function(id) {
       this.insertView(new OneColLayout({
         collection: photos,
-        modelId: id
+        modelId: id,
+        page: "photo"
       }));
+
+    },
+
+    upload: function() {
+
+      var self = this;
+
+      var uploadView = new OneColLayout({
+        collection: photos,
+        page: "upload"
+      });
+
+      this.insertView(uploadView);
+
+      // when the upload is done, navigate back to our
+      // gallery view
+      uploadView.on("uploaded", function(ev) {
+        self.navigate("", { trigger: true });
+      });
 
     }
 

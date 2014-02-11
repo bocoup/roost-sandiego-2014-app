@@ -1,0 +1,147 @@
+/* ------------------ */
+/*   Primary styles   */
+/* ------------------ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: $background_color;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1 {
+  margin: 0;
+}
+
+.container {
+  max-width: 980px;
+  margin: auto;
+}
+
+.btn {
+  line-height: 2.5em;
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+  border: none;
+  font-size: 16px;
+  color: white;
+  background-color: #d24551;
+  margin: 0 .5em;
+  width: 8em;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #942E37;
+  }
+}
+
+.delete .btn {
+  background: #E7E7E7;
+  font-size: .8em;
+  color: #a3a3a3;
+  width: 11em;
+
+  &:hover {
+    background: #CECECE;
+    color: #838383;
+  }
+}
+
+
+.photo {
+  background: white;
+}
+
+.content {
+  .webcam video {
+    border: 2px solid #9E9E9E;
+    margin-bottom: 2em;
+    padding: 1em;
+  }
+
+  input.btn {
+    color: black;
+  }
+
+  input.btn:hover {
+    background: #ebebeb;
+  }
+}
+
+/* ------------------ */
+/*       Header       */
+/* ------------------ */
+
+header {
+  background: $header_background;
+  padding: 1.0em 0 .6em;
+  margin-bottom: 10em /*3.5em*/;
+  text-align: center;
+}
+
+.logo a {
+  display: inline-block;
+  border-top: 1px solid $header_logo;
+  border-bottom: 1px solid $header_logo;
+  padding: .2em;
+}
+
+/* ------------------ */
+/*    Media Queries   */
+/* ------------------ */
+
+@media only screen and (max-width: 980px) {
+  header {
+    margin-bottom: 8em;
+  }
+  .container {
+    margin: 0 1em;
+  }
+}
+
+/* webcam view */
+.webcam {
+  video {
+    width: 100%;
+    border: 2px solid #06d1f0;
+    box-sizing: border-box;
+  }
+
+  canvas {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .webcam {
+    canvas {
+      width: 100%;
+    }
+  }
+}
+
+/* toolbar */
+div.toolbar {
+  text-align: center;
+  border-bottom: 1px solid #DADADA;
+  padding: 2em;
+}

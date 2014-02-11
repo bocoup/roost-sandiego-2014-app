@@ -12,6 +12,7 @@
     "lodash": "~2.4.1",
     "jquery": "~2.0.3",
     "requirejs": "~2.1.10",
-    "lodash-template-loader": "~0.1.4"
+    "lodash-template-loader": "~0.1.4",
+    "vintageJS": "git@github.com:rendro/vintageJS.git#~1.1.4"
   }
 }

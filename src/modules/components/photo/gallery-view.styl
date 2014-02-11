@@ -1,0 +1,43 @@
+/* photo gallery view */
+ul.thumbnails {
+  overflow: auto;
+  margin-bottom: 2em;
+  list-style-type: none;
+
+  li {
+    width: 25%;
+    float: left;
+    padding: 0 0.5em;
+
+    a.thumbnail {
+      display: block;
+      padding: 4px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        border-color: #70425b;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  ul.thumbnails {
+    margin-bottom: 1em;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  ul.thumbnails li {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  ul.thumbnails li {
+    width: 100%;
+  }
+}

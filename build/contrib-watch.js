@@ -5,7 +5,7 @@ module.exports = function(grunt) {
       options: {
         livereload: true,
       },
-      files: ['src/**/*.{js,css,html}', 'prod/*'],
+      files: ['src/**/*.{js,html}', 'prod/*'],
       tasks: [],
     },
     jshintrc: {
@@ -24,6 +24,10 @@ module.exports = function(grunt) {
       files: 'src/pages/*.html',
       tasks: ['copy:app'],
     },
+    styles: {
+      files: 'src/**/*.styl',
+      tasks: ['stylus:dev'],
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
