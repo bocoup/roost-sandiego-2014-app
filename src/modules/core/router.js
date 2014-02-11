@@ -19,7 +19,8 @@ define(function(require) {
     routes: {
       "": "index",
       "photo/:id": "singlePhoto",
-      "upload": "upload"
+      "upload": "upload",
+      "webcam": "webcam"
     },
 
     insertView: function(pageView) {
@@ -33,7 +34,8 @@ define(function(require) {
 
     index: function() {
       this.insertView(new TwoColLayout({
-        collection: photos
+        collection: photos,
+        page: "index"
       }));
     },
 
@@ -62,6 +64,22 @@ define(function(require) {
       uploadView.on("uploaded", function(ev) {
         self.navigate("", { trigger: true });
       });
+
+    },
+
+    webcam: function() {
+      var webcamView = new TwoColLayout({
+        collection: photos,
+        page: "webcam"
+      });
+
+      this.insertView(webcamView);
+
+      // when the upload is done, navigate back to our
+      // gallery view
+      webcamView.on("uploaded", function(ev) {
+        this.navigate("", { trigger: true });
+      }, this);
 
     }
 

@@ -1,0 +1,54 @@
+define(function() {
+    'use strict';
+    var gum = {};
+    var navigator = window.navigator;
+
+    var strats = gum.strategies = {
+        playStream: {
+            moz: function(videoElem, stream) {
+                videoElem.mozSrcObject = stream;
+                videoElem.play();
+            },
+            webkit: function(videoElem, stream) {
+                videoElem.src = gum.URL.createObjectURL(stream);
+                videoElem.play();
+            }
+        },
+        stopStream: {
+            moz: function(videoElem) {
+                if (videoElem.mozSrcObject) {
+                    videoElem.mozSrcObject.stop();
+                }
+                delete videoElem.mozSrcObject;
+            },
+            webkit: function(videoElem) {
+                if(videoElem.stop) {
+                    videoElem.stop();
+                }
+                else {
+                    videoElem.pause();
+                }
+                videoElem.src = '';
+            }
+        }
+    };
+
+    // Expose the correct methods according to the environment
+    gum.URL = window.URL || window.webkitURL;
+    gum.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia || navigator.msGetUserMedia || null;
+
+    if (gum.getUserMedia) {
+        gum.getUserMedia = gum.getUserMedia.bind(navigator);
+    }
+
+    if ('mozSrcObject' in document.createElement('video')) {
+        gum.playStream = strats.playStream.moz;
+        gum.stopStream = strats.stopStream.moz;
+    } else {
+        gum.playStream = strats.playStream.webkit;
+        gum.stopStream = strats.stopStream.webkit;
+    }
+
+    return gum;
+});
