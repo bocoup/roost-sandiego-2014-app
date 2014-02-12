@@ -1,4 +1,4 @@
-define(['src/modules/core/base-view'], function(BaseView) {
+define(['core/base-view'], function(BaseView) {
   'use strict';
 
   suite('BaseView', function() {
