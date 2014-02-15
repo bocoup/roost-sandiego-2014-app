@@ -1,5 +1,9 @@
 # Roostagram!
 
+## What it is
+
+Roostagram was created by engineers at Bocoup to demonstrate and teach the software development process using modern tools and workflows. This application is collaboratively built during [Roost](http://roost.bocoup.com) and [Bocoup's training classes](http://training.bocoup.com/classes). For a complete list of the tools Roostagram uses, [check out this gist](https://gist.github.com/bobholt/8922767). 
+
 ## Installation
 
 Make sure you have all this stuff.
